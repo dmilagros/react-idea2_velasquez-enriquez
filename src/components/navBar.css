@@ -4,8 +4,9 @@
 	height: 100px;
 	display: grid;
 	grid-template-columns: 25% 50% 25%;
-	background-color: #ff647e;
-
+	background-color: #e48585;
+	margin: 0;
+	padding: 0;
 }
 
 .navigation-items {
@@ -35,7 +36,7 @@
 }
 
 .navigation-items a:hover {
-	background-color: #f65a74;
+	background-color: #ee9595;
 }
 
 .navigation-button {
@@ -53,6 +54,9 @@
 	outline: none;
 	border: none;
 	cursor: pointer;
+}
+i{
+	color: #fff;
 }
 
 li a img {
