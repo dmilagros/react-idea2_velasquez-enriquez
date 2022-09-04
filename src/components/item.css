@@ -1,4 +1,20 @@
 .item {
 	border: 1px solid #ff90a3;
 	border-radius: 8px;
+	padding: 5px 15px;
+}
+
+.item h5 {
+	min-height: 50px;
+	font-size: 1.1rem;
+}
+
+.item section p {
+	min-height: 104px;
+	font-size: .8rem;
+	text-align: left;
+}
+
+.item img {
+	width: 100%;
 }

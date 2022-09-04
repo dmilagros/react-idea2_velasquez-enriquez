@@ -2,11 +2,10 @@ import React from 'react'
 import "./item.css"
 
 const Item = ({ id, title, description, price, pictureUrl }) => {
-console.log('id', id)
-	/* id, title, , price, pictureUrl */
+
 	return (
 		<div className="item">
-			<h4>{title} + {id}</h4>
+			<h5>{title} - {id}</h5>
 			<section>
 				<img src={pictureUrl} alt={title} />
 				<p>{description}</p>
