@@ -4,7 +4,7 @@
 	height: 100px;
 	display: grid;
 	grid-template-columns: 25% 50% 25%;
-	background-color: #e48585;
+	background-color: #ff9faf;
 	margin: 0;
 	padding: 0;
 }
@@ -36,7 +36,7 @@
 }
 
 .navigation-items a:hover {
-	background-color: #ee9595;
+	background-color: #ff90a3;
 }
 
 .navigation-button {
