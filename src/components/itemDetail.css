@@ -1,0 +1,31 @@
+.item-detail {
+	width: 100%;
+	display: flex;	
+	padding: 8rem 4rem;
+	gap: 2rem;
+}
+
+.item-detail > div {
+	width: 35%;
+	height: auto;
+	min-width: 255px;
+}
+
+.item-detail > div > img {
+	width: 100%;
+	height: auto;
+}
+
+.item-detail > .section-detail {
+	width: 65%;
+	padding: 0 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.section-detail > p, .section-detail > h4 {
+	margin-top: 0;
+	text-align: left;
+	max-width: 480px;
+}
