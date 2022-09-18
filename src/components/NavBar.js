@@ -1,16 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { useCartContext } from "../context/CartContext";
+
 import CartWidget from "./CartWidget";
 import categories from "../categories.js";
 import "./navBar.css";
 
 const NavBar = () => {
+  const { cart } = useCartContext();
+
   return (
     <ul className="navigation">
       <li>
-        <a href="">
+        <Link to="/">
           <img src="./logo.png" alt="" />
-        </a>
+        </Link>
       </li>
       <ul className="navigation-items">
         {categories.map((category) => (
@@ -21,6 +26,7 @@ const NavBar = () => {
       </ul>
       <li className="navigation-button">
         <CartWidget />
+          <span>{cart.length}</span>
       </li>
     </ul>
   );

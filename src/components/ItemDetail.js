@@ -1,13 +1,16 @@
 import React from 'react'
+import { useCartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 import './itemDetail.css'
 
 const ItemDetail = ({ item }) => {
-	const { name, description, price, pictureUrl } = item; // Destructuring
+	const { addItem } = useCartContext();
+	const { id, name, description, price, pictureUrl } = item; // Destructuring	
 
 	if(!name) {
 		return <p>Loading...</p>
-	} else
+	} 
+
 	return (
 		<div className="item-detail">
 			<div>
@@ -22,7 +25,7 @@ const ItemDetail = ({ item }) => {
 				<p>Precio: s/ {price}</p>
 				
 				<p>Cantidad:</p>
-				<ItemCount stock={5} initial={1} />
+				<ItemCount stock={5} initial={1} onAdd={addItem} item={{id, name, description, price, pictureUrl}} />
 			</section>
 		</div>
 	)

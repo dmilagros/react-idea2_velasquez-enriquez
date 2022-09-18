@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./itemCount.css";
 
-const ItemCounter = ({ stock, initial }) => {
+const ItemCounter = ({ stock, initial, onAdd, item }) => {
   const [count, setCount] = useState(initial);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -19,13 +19,6 @@ const ItemCounter = ({ stock, initial }) => {
     setIsVisible(false);
   };
 
-  const onAdd = () => {
-    if (count > 0) {
-      setIsVisible(true);
-      setCount(0);
-    }
-  };
-
   return (
     <div className="item-counter">
       <section className="item-counter-section">
@@ -33,7 +26,7 @@ const ItemCounter = ({ stock, initial }) => {
         <span>{count}</span>
         <button onClick={increase}>+</button>
       </section>
-      <button onClick={onAdd}>Agregar al carrito</button>
+      <button onClick={() => onAdd(item, count)}>Agregar al carrito</button>
       {isVisible && <span>Se agregaron {count} items al carrito</span>}
     </div>
   );
