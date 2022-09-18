@@ -11,7 +11,6 @@ const ItemDetailContainer = () => {
     getItem().then((data) => {
       if (data) {
         setItem(data);
-				console.log('data', data)
       }
     });
   }, []);

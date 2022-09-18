@@ -26,7 +26,7 @@ const NavBar = () => {
       </ul>
       <li className="navigation-button">
         <CartWidget />
-          <span>{cart.length}</span>
+        {cart.length > 0 && <span className="navigation-count">{cart.length}</span>}
       </li>
     </ul>
   );
