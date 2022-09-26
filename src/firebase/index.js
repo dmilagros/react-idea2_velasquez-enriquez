@@ -16,9 +16,8 @@ export const uploadDocToFirebase = async (data) => {
 export const startReadDocFirebase = async (id) => {
   if (id) {
     const snap = await getDoc(doc(db, "products", id));
-
     if (snap.exists()) {
-      return snap.data();
+      return {id: id, ...snap.data()}
     } else {
       return [];
     }
