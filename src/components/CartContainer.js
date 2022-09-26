@@ -14,7 +14,7 @@ const CartContainer = () => {
       <h3>Listado de Productos</h3>
       {cart.length > 0 ? (
         <div className="container-table">
-          <table class="highlight">
+          <table className="highlight">
             <thead>
               <tr>
                 <th>Código</th>
@@ -26,8 +26,8 @@ const CartContainer = () => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item) => (
-                <CartItem product={item} />
+              {cart.map((item, index) => (
+                <CartItem key={index} product={item} />
               ))}
               <tr>
                 <td></td>

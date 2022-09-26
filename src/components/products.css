@@ -1,0 +1,27 @@
+.container-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 50px 40px;
+}
+
+.container-form div {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 20px;
+}
+label {	
+	color: #35A59B;
+	font-weight: bold;
+	font-size: 14px;
+	float: left;
+}
+
+input:focus {
+	background: #ff90a390;
+	color: #ff90a3;
+}
+

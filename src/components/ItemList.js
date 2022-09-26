@@ -1,26 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { startListProducts } from '../firebase';
 import Item from './Item'
 
 import "./itemList.css";
 
-const ItemList = ({ items }) => {
+const ItemList = () => {
 	const [iItemsProducts, setItemsProducts] = useState([])
 
-	const products = new Promise ((resolve, reject) => {
-		setTimeout(() => {
-			resolve(items)
-			}, 2000)
-		})
-
-		products.then((itemsProduct) => {
-			setItemsProducts(itemsProduct)
-			
+	useEffect(() => {
+		listProducts();
+	}, [])
+	
+	const listProducts = async () => {
+		try {
+			const allProducts = await startListProducts();
+			setItemsProducts(allProducts)
+		} catch (error) {
+			console.log("message error", error)
 		}
-	)
+	}
 
 	return (
 		<div className="item-list">
-			{iItemsProducts.map((item) => <Item key={item.id} {...item} />)}
+			{iItemsProducts.map((item, index) => <Item key={index} {...item} />)}
 		</div>
 	)
 }

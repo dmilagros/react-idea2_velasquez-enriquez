@@ -1,34 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+
+import {
+  startListProductsxCategory,
+  startReadCategoryDocFirebase,
+} from "../firebase";
 import ItemCategory from "./ItemCategory";
-import categories from "../categories";
 
 const ItemCategoryContainer = () => {
-	const { categoryId } = useParams()
-  const [item, setItem] = useState({});
-
-  console.log('categoryId', categoryId)
-  console.log('categories', categories)
+  const { categoryId } = useParams() || {};
+  const [productsByCategory, setProductsByCategory] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    getItem().then((data) => {
-      if (data) {
-        setItem(data);
-      }
-    });
-  }, []);
+    getCategory();
+    getItem(categoryId);
+  }, [categoryId]);
 
   // getItem con Promise
-  const getItem = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-				console.log('timeout');
-        resolve(categories.find((c) => c.id == categoryId));
-      }, 2000);
-    });
+  const getItem = async (categoryId) => {
+    if (categoryId) {
+      try {
+        const item = await startListProductsxCategory(categoryId);
+        setProductsByCategory(item);
+      } catch (error) {
+        console.log("error getItem", error);
+      }
+    }
   };
 
-  return <ItemCategory item={item} />;
+  const getCategory = async () => {
+    const category = await startReadCategoryDocFirebase(categoryId);
+    setCategoryName(category.type);
+  };
+
+  return (
+    <div>
+      <h5>Categoría: {categoryName}</h5>
+      <section className="item-list">
+        {productsByCategory.map((product, index) => (
+          <ItemCategory key={index} {...product} />
+        ))}
+      </section>
+    </div>
+  );
 };
 
 export default ItemCategoryContainer;
